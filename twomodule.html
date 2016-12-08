@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.26/angular.min.js"></script>
+        <!--<script src="angular.js"></script>-->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+		
+        <script>
+          var moduleA = angular.module("MyModuleA", []);
+          moduleA.controller("MyControllerA", function($scope,$http) {
+              $http.get('happenings.json').success(function(data) {
+              $scope.name = data;
+        });
+          });
+
+          var moduleB = angular.module("MyModuleB", []);
+          moduleB.controller("MyControllerB", function($scope,$http) {
+			  $http.get("http://localhost/happemysql.php")
+   .then(function (response) {$scope.name = response.data.records;});
+              
+          });
+
+          angular.module("CombineModule", ["MyModuleA", "MyModuleB"]);
+        </script>
+    </head>
+    <body ng-app="CombineModule">
+        <div>
+            <h1>Happenings from JSON</h1>
+            <div ng-controller="MyControllerA">
+				
+		<table border="1">
+        <tr>
+        <th>Name</th>
+        <th>Venue</th>
+        <th>Date</th>
+        <th>Image</th>
+        </tr>
+       <tr ng-repeat="Naphap in name">
+        <td>{{Naphap.name}}</td>
+        <td>{{Naphap.Venue}}</td>
+        <td>{{Naphap.Date}}</td>
+        <td><img ng-src="{{Naphap.flagURL}}" width="100"></td>
+      </tr>
+    </table>
+            </div>
+        </div>
+
+        <div>
+            <h1>Happenings from DB</h1>
+            <div ng-controller="MyControllerB">
+             <table border="1">
+			<tr>
+        <th>Name</th>
+        <th>Venue</th>
+        <th>Date</th>
+        
+        </tr>	
+  			<tr ng-repeat="x in name">
+    	<td>{{ x.name}}</td>
+    	<td>{{ x.venue }}</td>
+      	<td>{{ x.startdate }}</td>	</tr>
+</table>
+            </div>
+        </div>
+    </body>
+</html>
+
+
