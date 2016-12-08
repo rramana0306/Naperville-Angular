@@ -1,2 +1,2 @@
-# Naperville-Angular
-Website that gives us information about Happenings in Naperville from the JSON file and the DB.
+ # Naperville-Angular
+Website that gives us information about Happenings in Naperville from the JSON file and the DB. Install the XAMPP server. Run the Tomcat, MySql server from the XAMPP server . If the MySql server is not starting up from XAMPP server, then make sure that other instances of the MySql server is completely shutdown. The PHP files must be placed in the htdocs folder in the XAMPP installation folder.
