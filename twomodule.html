@@ -27,14 +27,19 @@
         <div>
             <h1>Happenings from JSON</h1>
             <div ng-controller="MyControllerA">
-				
-		<table border="1">
+			<table border="1">
+				<tr><b>Search here: </b> </tr></tr><tr><td><input ng-model="search.name"></td><td><input ng-model="search.Venue"></td><td><input ng-model="search.Date"></td></tr>
+			<tr ng-repeat="p in name | filter:search:name"><td>{{p.name}}</td><td>{{p.Venue}}</td><td>{{p.Date}}</td></tr>	
+			</table>
+			<br><br>
+			<table border="1">
         <tr>
         <th>Name</th>
         <th>Venue</th>
         <th>Date</th>
         <th>Image</th>
         </tr>
+			
        <tr ng-repeat="Naphap in name">
         <td>{{Naphap.name}}</td>
         <td>{{Naphap.Venue}}</td>
@@ -48,6 +53,12 @@
         <div>
             <h1>Happenings from DB</h1>
             <div ng-controller="MyControllerB">
+				
+				<table border="1">
+				<tr><b>Search here: </b> </tr></tr><tr><td><input ng-model="search.name"></td><td><input ng-model="search.venue"></td><td><input ng-model="search.startdate"></td></tr>
+			<tr ng-repeat="p in name | filter:search:name"><td>{{p.name}}</td><td>{{p.venue}}</td><td>{{p.startdate}}</td></tr>	
+			</table>
+			<br><br>
              <table border="1">
 			<tr>
         <th>Name</th>
